@@ -8,6 +8,7 @@ function CampusSelection() {
   const navigate = useNavigate();
 
   const handleCampusClick = (campusName, data) => {
+    window.scrollTo(0, 0); // Scroll to the top of the page
     navigate(`/campus/${campusName.toLowerCase()}`, { state: { data } });
   };
 

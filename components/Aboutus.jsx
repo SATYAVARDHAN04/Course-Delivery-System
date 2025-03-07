@@ -11,7 +11,7 @@ function Aboutus() {
         <Campuscard image="./Images/satya.jpeg" title="SATYA VARDHAN" />
         <Campuscard image="./Images/anish.jpeg" title="ANISH" />
         <Campuscard image="./Images/dinesh.jpeg" title="DINESH" />
-        <Campuscard image="./Images/profile.png" title="NAVEEN" />
+        <Campuscard image="./Images/naveen.jpeg" title="NAVEEN" />
       </div>
     </section>
   );

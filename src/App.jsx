@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Contactform from "../components/Contactform";
 import CampusPage from "../components/Campuspage";  // Import CampusPage
 import Branchselection from "../components/Branchselection";
+import Loginform from "../components/Loginform";  // Import Loginform
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         {/* Static Pages */}
         <Route path="/about-us" element={<Aboutus />} />
         <Route path="/contact" element={<Contactform />} />
-
+        <Route path="/login" element={<Loginform />} />
         {/* Dynamic Faculty Page */}
         <Route path="/campus/:campusName" element={<CampusPage />} />
       </Routes>

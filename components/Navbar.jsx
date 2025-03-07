@@ -24,6 +24,9 @@ function Navbar() {
           <li className="hover:text-gray-300" style={{ marginRight: "80px" }}>
             <Link to="/contact">Contact</Link>
           </li>
+          <li className="hover:text-gray-300" style={{ marginRight: "80px" }}>
+            <Link to="/login">Login/Sign Up</Link>
+          </li>
         </ul>
 
         {/* Profile Section */}
