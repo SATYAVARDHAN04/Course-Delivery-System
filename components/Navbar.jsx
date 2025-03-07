@@ -10,7 +10,7 @@ function Navbar() {
         {/* Logo Section */}
         <div className="flex items-center">
           <img src="/Images/logo.png" alt="Logo" className="h-12 w-12" />
-          <span className="text-2xl font-semibold ml-2">SATYOLOGY</span>
+          <span className="text-2xl font-semibold ml-2">CMS</span>
         </div>
 
         {/* Navigation Links */}

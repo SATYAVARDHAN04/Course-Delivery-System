@@ -4,7 +4,7 @@ function Herosection() {
         {/* Left Side - Image */}
         <div className="md:w-1/2 w-full flex justify-center border-2 border-gray-200">
           <img 
-            src="./Images/hero_education.png" 
+            src="./Images/intro.jpg" 
             alt="Hero" 
             className="w-100 h-auto rounded-lg shadow-md"
           />

@@ -8,10 +8,10 @@ function Aboutus() {
 
       {/* Cards Container */}
       <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-        <Campuscard image="./Images/GOAT.png" title="SATYA VARDHAN" />
-        <Campuscard image="./Images/GOAT.png" title="ANISH" />
-        <Campuscard image="./Images/GOAT.png" title="DINESH" />
-        <Campuscard image="./Images/GOAT.png" title="NAVEEN" />
+        <Campuscard image="./Images/satya.jpeg" title="SATYA VARDHAN" />
+        <Campuscard image="./Images/anish.jpeg" title="ANISH" />
+        <Campuscard image="./Images/dinesh.jpeg" title="DINESH" />
+        <Campuscard image="./Images/profile.png" title="NAVEEN" />
       </div>
     </section>
   );
