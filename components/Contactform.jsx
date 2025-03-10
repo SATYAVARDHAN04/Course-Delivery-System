@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styled from "styled-components";
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -19,65 +20,132 @@ function ContactForm() {
   };
 
   return (
-    <section className="flex justify-center items-center min-h-screen bg-gray-100 p-6">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-3xl font-semibold text-center text-blue-600 mb-6">
-          Contact Us
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name Field */}
-          <div>
-            <label className="block text-gray-700 font-medium mb-1">Name</label>
+    <StyledWrapper>
+
+      {/* Left Side - Image Section */}
+      <div className="image-container">
+        <img src="/images/contact2.jpg" alt="Contact Us" />
+      </div>
+      <div className="container">
+        <h2>Contact Us</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-box">
+            <label>Name</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
               placeholder="Enter your name"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
             />
           </div>
 
-          {/* Email Field */}
-          <div>
-            <label className="block text-gray-700 font-medium mb-1">Email</label>
+          <div className="input-box">
+            <label>Email</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
             />
           </div>
 
-          {/* Feedback Field */}
-          <div>
-            <label className="block text-gray-700 font-medium mb-1">Feedback</label>
+          <div className="input-box">
+            <label>Feedback</label>
             <textarea
               name="feedback"
               value={formData.feedback}
               onChange={handleChange}
               placeholder="Write your feedback..."
               rows="4"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
             ></textarea>
           </div>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition duration-300"
-          >
-            Submit Feedback
-          </button>
+          <button type="submit">Submit Feedback</button>
         </form>
       </div>
-    </section>
+    </StyledWrapper>
   );
 }
+
+const StyledWrapper = styled.section`
+  background: url("coffee.webp");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+
+  .container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+  }
+  .image-container img {
+    width: 10cm;
+    height: 10cm;
+    object-fit: cover;
+    margin-left:-3cm;
+  }
+
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #800000;
+    margin-bottom: 20px;
+  }
+
+  .input-box {
+    text-align: left;
+    margin-bottom: 15px;
+  }
+
+  .input-box label {
+    font-weight: bold;
+    color: #800000;
+  }
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid black; /* Bottom border only */
+  background: transparent;
+  font-size: 16px;
+  outline: none; /* Removes the default focus outline */
+  transition: border-color 0.3s ease-in-out;
+}
+
+input:focus, textarea:focus {
+  border-bottom: 3px solid #800000; /* Change color on focus */
+}
+
+  button {
+    width: 100%;
+    background-color: #800000;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+  }
+
+  button:hover {
+    background: black;
+    transform: scale(1.05);
+  }
+`;
 
 export default ContactForm;

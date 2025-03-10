@@ -14,7 +14,7 @@ function CampusSelection() {
 
   return (
     <section className="bg-gray-100 py-12 px-6 text-center mb-10">
-      <h1 className="text-4xl font-bold text-gray-800 mb-8">SELECT CAMPUS</h1>
+      <h1 className="text-4xl font-bold text-[#800000] mb-8">SELECT CAMPUS</h1>
       <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         
         <div onClick={() => handleCampusClick("vizag", vskp)} className="cursor-pointer">

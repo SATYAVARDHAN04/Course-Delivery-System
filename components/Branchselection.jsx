@@ -18,8 +18,8 @@ function Branchselection() {
   // Handle branch selection
   const handleBranchChange = (e) => {
     setBranch(e.target.value);
-    setSubject(""); // Reset subject when branch changes
-    setResource(""); // Reset resource when branch changes
+    setSubject("");
+    setResource("");
   };
 
   // Handle subject selection with validation
@@ -29,69 +29,124 @@ function Branchselection() {
       return;
     }
     setSubject(e.target.value);
-    setResource(""); // Reset resource when subject changes
+    setResource("");
   };
 
   return (
-    <div className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg max-w-2xl mx-auto mt-10 mb-10">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Select Your Course</h2>
+    <>
+      <style>
+        {`
+          .selection-container {
+            background: linear-gradient(to right, #f8fafc, #e2e8f0);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: center;
+          }
 
-      {/* Dropdowns Container */}
-      <div className="flex gap-6">
-        {/* Branch Dropdown */}
-        <select
-          value={branch}
-          onChange={handleBranchChange}
-          className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="">Select Branch</option>
-          <option value="CSE">CSE</option>
-          <option value="ECE">ECE</option>
-        </select>
+          .title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #800000;
+            margin-bottom: 20px;
+          }
 
-        {/* Subject Dropdown */}
-        <select
-          value={subject}
-          onChange={handleSubjectChange}
-          disabled={!branch}
-          className={`p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 ${
-            !branch ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-        >
-          <option value="">Select Subject</option>
-          {branch &&
-            subjects[branch].map((subj, index) => (
-              <option key={index} value={subj}>
-                {subj}
+          .dropdown-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+          }
+
+          .dropdown {
+            width: 80%;
+            padding: 10px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+          }
+
+          .dropdown:focus {
+            outline: none;
+            border-color: #800000;
+            box-shadow: 0px 4px 12px rgba(59, 130, 246, 0.3);
+          }
+
+          .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+
+          .submit-button {
+            margin-top: 20px;
+            padding: 10px 24px;
+            background-color: #800000;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+          }
+
+          .submit-button:hover {
+            background-color:rgb(0, 0, 0);
+            transform: scale(1.05);
+          }
+        `}
+      </style>
+
+      <div className="selection-container">
+        <h2 className="title">Select Your Course</h2>
+
+        {/* Dropdowns Container */}
+        <div className="dropdown-container">
+          {/* Branch Dropdown */}
+          <select value={branch} onChange={handleBranchChange} className="dropdown">
+            <option value="">Select Branch</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+          </select>
+
+          {/* Subject Dropdown */}
+          <select
+            value={subject}
+            onChange={handleSubjectChange}
+            disabled={!branch}
+            className={`dropdown ${!branch ? "disabled" : ""}`}
+          >
+            <option value="">Select Subject</option>
+            {branch &&
+              subjects[branch].map((subj, index) => (
+                <option key={index} value={subj}>
+                  {subj}
+                </option>
+              ))}
+          </select>
+
+          {/* Resource Dropdown */}
+          <select
+            value={resource}
+            onChange={(e) => setResource(e.target.value)}
+            disabled={!subject}
+            className={`dropdown ${!subject ? "disabled" : ""}`}
+          >
+            <option value="">Select Resource</option>
+            {resources.map((res, index) => (
+              <option key={index} value={res}>
+                {res}
               </option>
             ))}
-        </select>
+          </select>
+        </div>
 
-        {/* Resource Dropdown */}
-        <select
-          value={resource}
-          onChange={(e) => setResource(e.target.value)}
-          disabled={!subject}
-          className={`p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 ${
-            !subject ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-        >
-          <option value="">Select Resource</option>
-          {resources.map((res, index) => (
-            <option key={index} value={res}>
-              {res}
-            </option>
-          ))}
-        </select>
+        {/* Submit Button */}
+        {resource && <button className="submit-button">Submit</button>}
       </div>
-
-      {/* Submit Button */}
-      {resource && (
-        <button className="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700">
-          Submit
-        </button>
-      )}
-    </div>
+    </>
   );
 }
 
