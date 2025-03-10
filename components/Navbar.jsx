@@ -9,7 +9,7 @@ function Navbar() {
       <style>
         {`
           .navbar {
-            background-color: white;
+            background-color: #800000;
             padding: 10px;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
           }
@@ -25,13 +25,14 @@ function Navbar() {
           .logo-container {
             display: flex;
             align-items: center;
+            margin-left:-150px;
           }
 
           .logo-text {
             font-size: 2rem;
             font-family: "serif";
             font-weight: bold;
-            color: gold;
+            color: white;
             margin-left: 10px;
           }
 
@@ -44,7 +45,7 @@ function Navbar() {
           }
 
           .nav-links a {
-            color: black;
+            color: white;
             text-decoration: none;
             transition: color 0.3s ease;
           }
@@ -106,9 +107,10 @@ function Navbar() {
           {/* Logo Section */}
           <div className="logo-container">
             <img
-              src="/Images/image-removebg-preview.png"
+              src="/Images/add1.png"
               alt="Logo"
               className="h-14 w-20"
+              style={{marginLeft:"10px"}}
             />
             <span className="logo-text">CDS</span>
           </div>

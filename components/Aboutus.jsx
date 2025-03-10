@@ -2,7 +2,7 @@ import Campuscard from "./Campuscard";
 
 function Aboutus() {
   return (
-    <section className="bg-gray-100 py-12 px-6 text-center mb-10" style={{ border: "3px solid black" }}>
+    <section className="bg-gray-100 py-12 px-6 text-center mb-10" >
       {/* Main Title */}
       <h1 className="text-4xl font-bold text-[#800000] mb-4">ABOUT US</h1>
 

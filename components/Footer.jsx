@@ -71,10 +71,7 @@ function Footer() {
         </p>
 
         <div className="student-ids">
-          <p>VU22CSEN0300004</p>
-          <p>VU22CSEN0300028</p>
-          <p>VU22CSEN0300</p>
-          <p>VU22CSEN0300</p>
+          <p> S.Dinesh | Satya Vardhan | K.T.Anish Sai | A.Naveen</p>
         </div>
       </footer>
     </>

@@ -21,6 +21,8 @@ function App() {
           element={
             <>
               <Herosection />
+              <Herosection />
+
               <Campusselection /> {/* Campus Selection on Home Page */}
               <Branchselection/>
             </>
