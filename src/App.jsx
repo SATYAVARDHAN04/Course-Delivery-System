@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Herosection from "../components/Herosection";
+import Gitamsection from "../components/Gitamsection";
 import Campusselection from "../components/Campusselection";
 import Aboutus from "../components/Aboutus";
 import Footer from "../components/Footer";
@@ -21,7 +22,7 @@ function App() {
           element={
             <>
               <Herosection />
-              <Herosection />
+              <Gitamsection/>
 
               <Campusselection /> {/* Campus Selection on Home Page */}
               <Branchselection/>

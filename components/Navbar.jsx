@@ -20,12 +20,21 @@ function Navbar() {
             align-items: center;
             max-width: 1200px;
             margin: auto;
+            height:1.7cm
           }
 
           .logo-container {
             display: flex;
             align-items: center;
-            margin-left:-150px;
+            margin-left:-120px;
+            
+          }
+            .logo-container img{
+            display: flex;
+            align-items: center;
+            margin-left:-120px;
+            height: 3cm;
+            margin-top:2cm;
           }
 
           .logo-text {
@@ -107,10 +116,9 @@ function Navbar() {
           {/* Logo Section */}
           <div className="logo-container">
             <img
-              src="/Images/add1.png"
+              src="/Images/griffin-crop.png"
               alt="Logo"
-              className="h-14 w-20"
-              style={{marginLeft:"10px"}}
+              style={{marginLeft:"50px", marginBottom:"10px"}}
             />
             <span className="logo-text">CDS</span>
           </div>
@@ -157,4 +165,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navbar;

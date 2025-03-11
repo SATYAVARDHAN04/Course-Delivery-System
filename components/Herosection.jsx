@@ -82,8 +82,9 @@ function Herosection() {
             Welcome to Our Platform
           </h1>
           <p className="hero-text">
-            Founded in 1980, GITAM Deemed to be University stands at the intersection of multidisciplinary applied education and translational research. With 12 schools across Bengaluru, Hyderabad, and Visakhapatnam, GITAM empowers students to discover their potential through global perspectives, industry collaborations, and holistic development. Guided by integrity and the pursuit of knowledge and moral values, GITAM shapes future-ready citizens who drive entrepreneurship, innovation, and create meaningful societal impact. Committed to excellence, GITAM fosters diligence, innovation, entrepreneurship, collaboration, and community service.
-          </p>
+          Discover everything you need to know about GITAM’s esteemed faculty and academic resources in one place. Our platform provides detailed insights into faculty profiles, research areas, and available learning materials to enhance your academic journey. Stay connected, explore expert guidance, and access essential university resources effortlessly.
+          <br></br>
+          Start exploring now!          </p>
         </div>
       </section>
     </>

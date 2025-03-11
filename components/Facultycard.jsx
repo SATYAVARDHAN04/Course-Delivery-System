@@ -1,89 +1,113 @@
 function FacultyCard({ image, name, designation, department, profileUrl }) {
   return (
-    <div className="faculty-card">
+    <>
       <style>
         {`
           .faculty-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 24px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: linear-gradient(145deg, rgb(255, 255, 255), #e9ecef);
+            border-radius: 14px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15),
+                        -5px -5px 15px rgba(0, 0, 0, 0.13);
+            padding: 20px;
+            width: 260px;
             text-align: center;
-            border: 1px solid #ddd;
+            transition: all 0.3s ease-in-out;
+            border: 2px solid #d1d5db;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
           }
 
           .faculty-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.2);
+            border-color: #800000;
+          }
+
+          .faculty-image-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #800000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: white;
+            margin-bottom: 15px;
           }
 
           .faculty-image {
             width: 100%;
-            height: 192px;
-            border-radius: 8px;
+            height: 100%;
             object-fit: cover;
+            border-radius: 50%;
           }
 
           .faculty-name {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            color: #374151;
-            margin-top: 16px;
+            color: #2c3e50;
+            margin-top: 5px;
           }
 
           .faculty-designation {
-            font-size: 1rem;
-            color: #6b7280;
+            font-size: 0.9rem;
+            color: #555;
             font-weight: 500;
-            margin-top: 4px;
+            margin-top: 5px;
           }
 
           .faculty-department {
-            font-size: 1rem;
-            color: #2563eb;
+            font-size: 0.9rem;
+            color: #800000;
             font-weight: 600;
-            margin-top: 4px;
+            margin-top: 5px;
           }
 
           .profile-button {
-            display: block;
-            margin-top: 20px;
-            background-color: #2563eb;
+            display: inline-block;
+            margin-top: 12px;
+            background: #800000;
             color: white;
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             text-decoration: none;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
           }
 
           .profile-button:hover {
-            background-color: #1e40af;
+            background: #600000;
             transform: scale(1.05);
           }
         `}
       </style>
 
-      {/* Image Section */}
-      <img src={image} alt={name} className="faculty-image" />
+      <div className="faculty-card">
+        {/* Centered Image Section */}
+        <div className="faculty-image-container">
+          <img src={image} alt={name} className="faculty-image" />
+        </div>
 
-      {/* Faculty Details */}
-      <h3 className="faculty-name">{name}</h3>
-      <p className="faculty-designation">{designation}</p>
-      <p className="faculty-department">{department}</p>
+        {/* Faculty Details */}
+        <h3 className="faculty-name">{name}</h3>
+        <p className="faculty-designation">{designation}</p>
+        <p className="faculty-department">{department}</p>
 
-      {/* Profile Button */}
-      <a
-        href={profileUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="profile-button"
-      >
-        View Profile
-      </a>
-    </div>
+        {/* Profile Button */}
+        <a
+          href={profileUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="profile-button"
+        >
+          View Profile
+        </a>
+      </div>
+    </>
   );
 }
 
