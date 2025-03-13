@@ -112,14 +112,17 @@ function Navbar() {
       </style>
 
       <nav className="navbar">
+        
         <div className="navbar-container">
           {/* Logo Section */}
+          
           <div className="logo-container">
+            <Link to="/">
             <img
               src="/Images/griffin-crop.png"
               alt="Logo"
               style={{marginLeft:"50px", marginBottom:"10px"}}
-            />
+            /></Link>
             <span className="logo-text">CDS</span>
           </div>
 
