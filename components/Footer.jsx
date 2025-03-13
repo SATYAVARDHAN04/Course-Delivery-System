@@ -71,7 +71,14 @@ function Footer() {
         </p>
 
         <div className="student-ids">
-          <p> S.Dinesh | Satya Vardhan | K.T.Anish Sai | A.Naveen</p>
+        <div className="student-ids">
+          <p>
+        <a href="https://www.linkedin.com/in/dinesh-saidu-472b56259/" target="_blank" rel="noopener noreferrer">S.Dinesh</a> |  
+        <a href="https://www.linkedin.com/in/satya-vardhan-1a0b93249/" target="_blank" rel="noopener noreferrer">Satya Vardhan</a> |  
+        <a href="https://www.linkedin.com/in/anishkst07/" target="_blank" rel="noopener noreferrer">K.T.Anish Sai</a> |  
+        <a href="https://www.linkedin.com/in/annepu-naveen-164333257/" target="_blank" rel="noopener noreferrer">A.Naveen</a>
+        </p>
+        </div>
         </div>
       </footer>
     </>
