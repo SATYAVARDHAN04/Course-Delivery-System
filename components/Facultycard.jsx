@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 function FacultyCard({ image, name, designation, department, profileUrl }) {
   return (
     <>
@@ -106,6 +107,18 @@ function FacultyCard({ image, name, designation, department, profileUrl }) {
         >
           View Profile
         </a>
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="profile-button"
+        >
+          View feedback
+        </a>
+        {/* Submit Feedback Button with Routing */}
+        <Link to="/submit-feedback" className="profile-button">
+          Submit Feedback
+        </Link>
       </div>
     </>
   );

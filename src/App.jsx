@@ -6,9 +6,10 @@ import Campusselection from "../components/Campusselection";
 import Aboutus from "../components/Aboutus";
 import Footer from "../components/Footer";
 import Contactform from "../components/Contactform";
-import CampusPage from "../components/Campuspage";  // Import CampusPage
+import CampusPage from "../components/Campuspage";  
 import Branchselection from "../components/Branchselection";
-import Loginform from "../components/Loginform";  // Import Loginform
+import Loginform from "../components/Loginform";  
+import SubmitFeedback from "../components/Submitfeedback";  // Import the Feedback Component
 
 function App() {
   return (
@@ -22,10 +23,9 @@ function App() {
           element={
             <>
               <Herosection />
-              <Gitamsection/>
-
+              <Gitamsection />
               <Campusselection /> {/* Campus Selection on Home Page */}
-              <Branchselection/>
+              <Branchselection />
             </>
           } 
         />
@@ -34,8 +34,12 @@ function App() {
         <Route path="/about-us" element={<Aboutus />} />
         <Route path="/contact" element={<Contactform />} />
         <Route path="/login" element={<Loginform />} />
+
         {/* Dynamic Faculty Page */}
         <Route path="/campus/:campusName" element={<CampusPage />} />
+
+        {/* Submit Feedback Page Route */}
+        <Route path="/submit-feedback" element={<SubmitFeedback />} />  
       </Routes>
 
       <Footer /> {/* Footer remains global */}
