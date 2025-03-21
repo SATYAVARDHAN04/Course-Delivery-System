@@ -20,16 +20,16 @@ function Navbar() {
             align-items: center;
             max-width: 1200px;
             margin: auto;
-            height:1.7cm
+            height:1.7cm;
           }
 
           .logo-container {
             display: flex;
             align-items: center;
             margin-left:-120px;
-            
           }
-            .logo-container img{
+
+          .logo-container img {
             display: flex;
             align-items: center;
             margin-left:-120px;
@@ -112,17 +112,16 @@ function Navbar() {
       </style>
 
       <nav className="navbar">
-        
         <div className="navbar-container">
           {/* Logo Section */}
-          
           <div className="logo-container">
             <Link to="/">
-            <img
-              src="/Images/griffin-crop.png"
-              alt="Logo"
-              style={{marginLeft:"50px", marginBottom:"10px"}}
-            /></Link>
+              <img
+                src="/Images/griffin-crop.png"
+                alt="Logo"
+                style={{ marginLeft: "50px", marginBottom: "10px" }}
+              />
+            </Link>
             <span className="logo-text">CDS</span>
           </div>
 
@@ -145,7 +144,7 @@ function Navbar() {
           {/* Profile Section */}
           <div className="profile-container">
             <img
-              src="/Images/pofile.jpg"
+              src="/Images/profile.png"
               alt="Profile"
               className="profile-img"
               onClick={() => setDropdownVisible(!dropdownVisible)}
@@ -155,9 +154,15 @@ function Navbar() {
             {dropdownVisible && (
               <div className="dropdown-menu">
                 <ul>
-                  <li>Profile</li>
-                  <li>Settings</li>
-                  <li>Logout</li>
+                  <li>
+                    <Link to="/profile">Profile</Link>
+                  </li>
+                  <li>
+                    <Link to="/settings">Settings</Link>
+                  </li>
+                  <li>
+                    <Link to="/logout">Logout</Link>
+                  </li>
                 </ul>
               </div>
             )}
@@ -168,4 +173,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navbar;
