@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
-function FacultyCard({ image, name, designation, department, profileUrl }) {
+import { Link } from 'react-router-dom';
+
+function Facultycard({ image, name, designation, department, profileUrl }) {
   return (
     <>
       <style>
@@ -88,17 +89,12 @@ function FacultyCard({ image, name, designation, department, profileUrl }) {
       </style>
 
       <div className="faculty-card">
-        {/* Centered Image Section */}
         <div className="faculty-image-container">
           <img src={image} alt={name} className="faculty-image" />
         </div>
-
-        {/* Faculty Details */}
         <h3 className="faculty-name">{name}</h3>
         <p className="faculty-designation">{designation}</p>
         <p className="faculty-department">{department}</p>
-
-        {/* Profile Button */}
         <a
           href={profileUrl}
           target="_blank"
@@ -107,16 +103,19 @@ function FacultyCard({ image, name, designation, department, profileUrl }) {
         >
           View Profile
         </a>
-        <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* Link to ViewFeedback with faculty name */}
+        <Link
+          to="/view-feedback"
+          state={{ facultyName: name }}
           className="profile-button"
         >
-          View feedback
-        </a>
-        {/* Submit Feedback Button with Routing */}
-        <Link to="/submit-feedback" className="profile-button">
+          View Feedback
+        </Link>
+        <Link
+          to="/submit-feedback"
+          state={{ facultyName: name }}
+          className="profile-button"
+        >
           Submit Feedback
         </Link>
       </div>
@@ -124,4 +123,4 @@ function FacultyCard({ image, name, designation, department, profileUrl }) {
   );
 }
 
-export default FacultyCard;
+export default Facultycard;

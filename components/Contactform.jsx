@@ -1,33 +1,43 @@
 import { useState } from "react";
 import styled from "styled-components";
+import axios from "axios"; // For API requests
 
-function ContactForm() {
+function Contactform() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     feedback: "",
   });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    alert("Feedback Submitted Successfully!");
-    setFormData({ name: "", email: "", feedback: "" });
+    try {
+      const response = await axios.post("http://localhost:5000/api/contact", formData);
+      if (response.data.message === "Contact form submitted successfully") {
+        alert("Feedback Submitted Successfully!");
+        setFormData({ name: "", email: "", feedback: "" });
+        setError("");
+      }
+    } catch (err) {
+      setError("Failed to submit feedback. Please try again.");
+      console.error(err);
+    }
   };
 
   return (
     <StyledWrapper>
-
       {/* Left Side - Image Section */}
       <div className="image-container">
         <img src="/images/contact2.jpg" alt="Contact Us" />
       </div>
       <div className="container">
         <h2>Contact Us</h2>
+        {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="input-box">
             <label>Name</label>
@@ -93,9 +103,8 @@ const StyledWrapper = styled.section`
     width: 10cm;
     height: 10cm;
     object-fit: cover;
-    margin-left:-3cm;
+    margin-left: -3cm;
   }
-
 
   h2 {
     font-size: 2.5rem;
@@ -114,20 +123,22 @@ const StyledWrapper = styled.section`
     color: #800000;
   }
 
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-bottom: 1px solid black; /* Bottom border only */
-  background: transparent;
-  font-size: 16px;
-  outline: none; /* Removes the default focus outline */
-  transition: border-color 0.3s ease-in-out;
-}
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid black; /* Bottom border only */
+    background: transparent;
+    font-size: 16px;
+    outline: none; /* Removes the default focus outline */
+    transition: border-color 0.3s ease-in-out;
+  }
 
-input:focus, textarea:focus {
-  border-bottom: 3px solid #800000; /* Change color on focus */
-}
+  input:focus,
+  textarea:focus {
+    border-bottom: 3px solid #800000; /* Change color on focus */
+  }
 
   button {
     width: 100%;
@@ -148,4 +159,4 @@ input:focus, textarea:focus {
   }
 `;
 
-export default ContactForm;
+export default Contactform;

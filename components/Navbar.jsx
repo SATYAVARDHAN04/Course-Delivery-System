@@ -1,8 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+    setDropdownVisible(false);
+  };
+
+  const handleProfileClick = () => {
+    console.log("Navigating to /profile"); // Debug log
+    setDropdownVisible(false); // Close dropdown after clicking
+  };
 
   return (
     <>
@@ -20,21 +32,18 @@ function Navbar() {
             align-items: center;
             max-width: 1200px;
             margin: auto;
-            height:1.7cm;
+            height: 1.7cm;
           }
 
           .logo-container {
             display: flex;
             align-items: center;
-            margin-left:-120px;
+            margin-left: -120px;
           }
 
           .logo-container img {
-            display: flex;
-            align-items: center;
-            margin-left:-120px;
             height: 3cm;
-            margin-top:2cm;
+            margin-top: 2cm;
           }
 
           .logo-text {
@@ -113,7 +122,6 @@ function Navbar() {
 
       <nav className="navbar">
         <div className="navbar-container">
-          {/* Logo Section */}
           <div className="logo-container">
             <Link to="/">
               <img
@@ -125,10 +133,9 @@ function Navbar() {
             <span className="logo-text">CDS</span>
           </div>
 
-          {/* Navigation Links */}
           <ul className="nav-links">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
             <li>
               <Link to="/about-us">About</Link>
@@ -136,12 +143,8 @@ function Navbar() {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
           </ul>
 
-          {/* Profile Section */}
           <div className="profile-container">
             <img
               src="/Images/profile.png"
@@ -150,18 +153,17 @@ function Navbar() {
               onClick={() => setDropdownVisible(!dropdownVisible)}
             />
 
-            {/* Dropdown Menu */}
             {dropdownVisible && (
               <div className="dropdown-menu">
                 <ul>
-                  <li>
+                  <li onClick={handleProfileClick}>
                     <Link to="/profile">Profile</Link>
                   </li>
                   <li>
                     <Link to="/settings">Settings</Link>
                   </li>
-                  <li>
-                    <Link to="/logout">Logout</Link>
+                  <li onClick={handleLogout}>
+                    Logout
                   </li>
                 </ul>
               </div>

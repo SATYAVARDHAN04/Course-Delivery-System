@@ -1,25 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 
-const Form = () => {
+const Loginform = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:5000/api/login", {
+        email,
+        password,
+      });
+      console.log('Login response:', response.data);
+
+      if (response.data.message === "Login successful") {
+        const { FullName, Email } = response.data.user;
+        localStorage.setItem("user", JSON.stringify({ name: FullName, email: Email }));
+        navigate("/home");
+      } else {
+        setError(response.data.error || "Login failed");
+      }
+    } catch (err) {
+      setError("Invalid email or password. Please try again.");
+      console.error('Login error:', err.response ? err.response.data : err);
+    }
+  };
+
   return (
     <StyledWrapper>
       <div className="content">
-        {/* Left Side Image */}
         <div className="image-container">
           <img src="./Images/login.png" alt="Login Illustration" className="login-image" />
         </div>
-
-        {/* Login Form */}
         <div className="container">
-          <form action="home.html">
+          <form onSubmit={handleSubmit}>
             <h1>LOGIN</h1>
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <div className="input-box">
-              <input type="email" placeholder="USER ID/EMAIL ID" required />
+              <input
+                type="email"
+                placeholder="USER ID/EMAIL ID"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
               <i className="bi bi-person"></i>
             </div>
             <div className="input-box">
-              <input type="password" placeholder="PASSWORD" required />
+              <input
+                type="password"
+                placeholder="PASSWORD"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
               <i className="bi bi-lock"></i>
             </div>
             <div className="remember-me">
@@ -32,7 +72,9 @@ const Form = () => {
               <a href="forgot password.html">Forgot password?</a>
             </div>
             <div className="register-link">
-              <p>Don't have an account? <a href="sign.html">Sign up</a></p>
+              <p>
+                Don't have an account? <a href="/">Sign up</a>
+              </p>
             </div>
           </form>
         </div>
@@ -41,6 +83,7 @@ const Form = () => {
   );
 };
 
+// StyledWrapper remains unchanged
 const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -58,7 +101,7 @@ const StyledWrapper = styled.div`
     padding: 30px;
     width: 100%;
     max-width: 900px;
-    margin-top:-3cm;
+    margin-top: -3cm;
   }
 
   .image-container {
@@ -128,7 +171,7 @@ const StyledWrapper = styled.div`
 
   .forgot a,
   .register-link a {
-    color:  #800000;
+    color: #800000;
     text-decoration: none;
     font-weight: bold;
   }
@@ -152,4 +195,4 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export default Form;
+export default Loginform;

@@ -1,27 +1,58 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom"; // To get faculty name and redirect
+import axios from "axios"; // For API requests
 
 function Submitfeedback() {
   const [feedback, setFeedback] = useState("");
   const [difficulty, setDifficulty] = useState(null);
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+  const [error, setError] = useState("");
+  const location = useLocation(); // Get data from Link state
+  const navigate = useNavigate(); // For redirecting after submission
 
-  const handleSubmit = (e) => {
+  const { facultyName } = location.state || {}; // Extract facultyName from state
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!facultyName) {
+      setError("Faculty information is missing.");
+      return;
+    }
     if (!difficulty) {
-      alert("Please select the difficulty level.");
+      setError("Please select the difficulty level.");
       return;
     }
     if (rating === 0) {
-      alert("Please provide a rating.");
+      setError("Please provide a rating.");
       return;
     }
-    alert(`Feedback submitted!\nDifficulty: ${difficulty}\nRating: ${rating} stars\nComment: ${feedback}`);
+
+    try {
+      const response = await axios.post("http://localhost:5000/api/submit-feedback", {
+        facultyName,
+        difficulty,
+        rating,
+        feedback,
+      });
+
+      if (response.data.message === "Feedback submitted successfully") {
+        alert("Feedback submitted successfully!");
+        navigate("/home"); // Redirect to home after submission
+      }
+    } catch (err) {
+      setError("Failed to submit feedback. Please try again.");
+      console.error(err);
+    }
   };
 
   return (
     <div className="max-w-md mx-auto mt-10 bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Submit Feedback</h2>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+        Submit Feedback for {facultyName || "Faculty"}
+      </h2>
+      {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Difficulty Selection */}
@@ -38,7 +69,6 @@ function Submitfeedback() {
               />
               <span className="text-gray-700">Strict</span>
             </label>
-
             <label className="flex items-center space-x-2">
               <input
                 type="radio"
@@ -52,7 +82,7 @@ function Submitfeedback() {
           </div>
         </div>
 
-        {/* ⭐ Star Rating System */}
+        {/* Star Rating System */}
         <div>
           <label className="block text-gray-700 font-medium">Rating:</label>
           <div className="flex space-x-1 mt-2">
@@ -61,8 +91,9 @@ function Submitfeedback() {
               return (
                 <span
                   key={index}
-                  className={`cursor-pointer text-3xl ${starValue <= (hover || rating) ? "text-yellow-400" : "text-gray-300"
-                    }`}
+                  className={`cursor-pointer text-3xl ${
+                    starValue <= (hover || rating) ? "text-yellow-400" : "text-gray-300"
+                  }`}
                   onClick={() => setRating(starValue)}
                   onMouseEnter={() => setHover(starValue)}
                   onMouseLeave={() => setHover(rating)}

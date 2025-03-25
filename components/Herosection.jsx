@@ -8,10 +8,7 @@ function Herosection() {
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            background-color: #f3f4f6;
             padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             margin: 40px 0;
           }
 
@@ -22,18 +19,25 @@ function Herosection() {
           }
 
           .hero-image-container {
-            width: 10cm;
+            width: 300px; /* Increased image size */
             display: flex;
-            justify-content: center;
-            border: 2px solid #d1d5db;
-            margin-left:5cm;
+            justify-content: flex-end; /* Move image to the right */
+            padding: 8px;
+            margin-top: 20px;
+          }
+
+          @media (min-width: 768px) {
+            .hero-image-container {
+              width: 450px; /* Further increased size on larger screens */
+              margin-left: 50px; /* Push image further right */
+            }
           }
 
           .hero-image {
             width: 100%;
             height: auto;
             border-radius: 8px;
-            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
           }
 
           .hero-content {
@@ -52,7 +56,7 @@ function Herosection() {
           }
 
           .hero-title {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: #800000;
           }
@@ -63,28 +67,35 @@ function Herosection() {
             margin-top: 16px;
             line-height: 1.6;
           }
+
+          .highlight {
+            font-weight: bold;
+            color: #800000;
+          }
         `}
       </style>
 
       <section className="hero-section">
-        {/* Left Side - Image */}
+        {/* Left Side - Content */}
+        <div className="hero-content">
+          <h1 className="hero-title">Welcome to Our Platform</h1>
+          <p className="hero-text">
+            Discover everything you need to know about GITAM’s esteemed faculty and academic resources in one place. 
+            Our platform provides detailed insights into faculty profiles, research areas, and available learning materials 
+            to enhance your academic journey. Stay connected, explore expert guidance, and access essential university 
+            resources effortlessly.
+            <br /><br />
+            <span className="highlight">Start exploring now!</span>
+          </p>
+        </div>
+
+        {/* Right Side - Image */}
         <div className="hero-image-container">
           <img 
             src="./Images/intro2.png" 
             alt="Hero" 
             className="hero-image"
           />
-        </div>
-
-        {/* Right Side - Content */}
-        <div className="hero-content">
-          <h1 className="hero-title">
-            Welcome to Our Platform
-          </h1>
-          <p className="hero-text">
-          Discover everything you need to know about GITAM’s esteemed faculty and academic resources in one place. Our platform provides detailed insights into faculty profiles, research areas, and available learning materials to enhance your academic journey. Stay connected, explore expert guidance, and access essential university resources effortlessly.
-          <br></br>
-          Start exploring now!          </p>
         </div>
       </section>
     </>

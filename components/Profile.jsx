@@ -2,42 +2,23 @@ import React from "react";
 import styled from "styled-components";
 
 const Profile = () => {
+  // Retrieve user data from localStorage, fallback to "Unknown" and "N/A"
+  const user = JSON.parse(localStorage.getItem("user")) || { name: "Unknown", email: "N/A" };
+  const { name, email } = user;
+
   return (
     <ProfileContainer>
       <h2 className="title">🎓 Student Profile</h2>
       <div className="profile-card">
         <div className="profile-image">
-          <img src="https://static.vecteezy.com/system/resources/previews/026/632/089/original/profile-icon-symbol-design-illustration-vector.jpg" />
+          <img src="/Images/logo.png" alt="Profile Logo" />
         </div>
         <div className="profile-info">
-          <h3 className="name">Satya</h3>
+          <h3 className="name">{name}</h3>
           <p>
-            <span> Student ID:</span> 321000001
-          </p>
-          <p>
-            <span> Class:</span> 3rd Year
-          </p>
-          <p>
-            <span> Section:</span> A
+            <span>Email:</span> {email}
           </p>
         </div>
-      </div>
-
-      <div className="profile-details">
-        <h3>General Information</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td> Roll:</td> <td>125</td>
-            </tr>
-            <tr>
-              <td> Academic Year:</td> <td>2022</td>
-            </tr>
-            <tr>
-              <td> Gender:</td> <td>Male</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </ProfileContainer>
   );
@@ -76,6 +57,7 @@ const ProfileContainer = styled.div`
     width: 120px;
     height: 120px;
     border: 3px solid #800000;
+    object-fit: cover;
   }
 
   .profile-info {
@@ -96,30 +78,6 @@ const ProfileContainer = styled.div`
   }
 
   .profile-info span {
-    font-weight: bold;
-    color: #800000;
-  }
-
-  .profile-details {
-    margin-top: 20px;
-    padding: 20px;
-    background: #f8f8f8;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    font-size: 16px;
-  }
-
-  td:first-child {
     font-weight: bold;
     color: #800000;
   }

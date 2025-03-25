@@ -5,21 +5,22 @@ function Branchselection() {
   const [branch, setBranch] = useState("");
   const [subject, setSubject] = useState("");
   const [resource, setResource] = useState("");
+  const [showPDF, setShowPDF] = useState(false); // State to control PDF display
 
   // Branch-wise subjects
   const subjects = {
     CSE: ["Data Structures", "Algorithms", "Operating Systems", "DBMS"],
-    ECE: ["Circuit Theory", "Digital Electronics", "Communication Systems"],
   };
 
   // Available resources
-  const resources = ["PYQ", "Recommended Videos", "Notes", "Textbooks"];
+  const resources = ["PYQ", "Notes", "Textbooks"];
 
   // Handle branch selection
   const handleBranchChange = (e) => {
     setBranch(e.target.value);
     setSubject("");
     setResource("");
+    setShowPDF(false); // Reset PDF view when branch changes
   };
 
   // Handle subject selection with validation
@@ -30,6 +31,22 @@ function Branchselection() {
     }
     setSubject(e.target.value);
     setResource("");
+    setShowPDF(false); // Reset PDF view when subject changes
+  };
+
+  // Handle resource selection
+  const handleResourceChange = (e) => {
+    setResource(e.target.value);
+    setShowPDF(false); // Reset PDF view when resource changes
+  };
+
+  // Handle submit button click
+  const handleSubmit = () => {
+    if (branch === "CSE" && resource === "PYQ") {
+      setShowPDF(true); // Show PDF when CSE and PYQ are selected
+    } else {
+      alert("PDF is only available for CSE - PYQ at this time.");
+    }
   };
 
   return (
@@ -93,8 +110,24 @@ function Branchselection() {
           }
 
           .submit-button:hover {
-            background-color:rgb(0, 0, 0);
+            background-color: rgb(0, 0, 0);
             transform: scale(1.05);
+          }
+
+          .pdf-container {
+            margin-top: 20px;
+            text-align: center;
+          }
+
+          .pdf-link {
+            color: #800000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+          }
+
+          .pdf-link:hover {
+            color: rgb(0, 0, 0);
           }
         `}
       </style>
@@ -108,7 +141,6 @@ function Branchselection() {
           <select value={branch} onChange={handleBranchChange} className="dropdown">
             <option value="">Select Branch</option>
             <option value="CSE">CSE</option>
-            <option value="ECE">ECE</option>
           </select>
 
           {/* Subject Dropdown */}
@@ -130,7 +162,7 @@ function Branchselection() {
           {/* Resource Dropdown */}
           <select
             value={resource}
-            onChange={(e) => setResource(e.target.value)}
+            onChange={handleResourceChange}
             disabled={!subject}
             className={`dropdown ${!subject ? "disabled" : ""}`}
           >
@@ -144,7 +176,33 @@ function Branchselection() {
         </div>
 
         {/* Submit Button */}
-        {resource && <button className="submit-button">Submit</button>}
+        {resource && (
+          <button className="submit-button" onClick={handleSubmit}>
+            Submit
+          </button>
+        )}
+
+        {/* PDF Display */}
+        {showPDF && (
+          <div className="pdf-container">
+            <p>View the PDF below:</p>
+            <a
+              href="src\assets\ANNASSIGNMENT1.pdf" // Path to PDF in public folder
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pdf-link"
+            >
+              Download/View CSE PYQ PDF
+            </a>
+            {/* Optionally embed the PDF */}
+            {/* <iframe
+              src="/cse_pyq.pdf"
+              width="100%"
+              height="500px"
+              title="CSE PYQ PDF"
+            /> */}
+          </div>
+        )}
       </div>
     </>
   );
