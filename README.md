@@ -1,12 +1,37 @@
-# React + Vite
+# **COURSE MANAGEMENT SYSTEM (CMS)** 🎓  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based **Course Management System** designed for students and faculty to access academic resources, faculty details, and submit feedback. The platform provides structured navigation to explore different **faculty members across campuses, branches, subjects, and study materials**.  
 
-Currently, two official plugins are available:
+## **🚀 Features**  
+✅ **User Authentication** – Secure login/signup system  
+✅ **Campus & Branch Selection** – Dynamic course & subject filtering  
+✅ **Faculty Directory** – View faculty details with profile links  
+✅ **Feedback System** – Rate professors with star ratings & difficulty level  
+✅ **Study Materials** – Access notes, textbooks, and recommended videos (under development)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **🛠️ Tech Stack**  
+- **Frontend:** React.js, Tailwind CSS  
+- **Backend:** Node.js, Express.js  
+- **Database:** MySQL  
+- **Routing:** React Router  
 
-## Expanding the ESLint configuration
+## **📌 Installation & Setup**  
+1. Clone the repository:  
+   ```sh
+   git clone https://github.com/SATYAVARDHAN04/Course-Delivery-System.git
+   cd Course-Delivery-System
+   ```
+2. Install dependencies:  
+   ```sh
+   npm install
+   ```
+3. Start the development server:  
+   ```sh
+   npm start
+   ```
+4. Access the app in your browser at `http://localhost:3000`  
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## **💡 Future Enhancements**  
+🔹 Implement a **discussion forum** for students  
+🔹 Add an **admin dashboard** for resource management  
+🔹 Enable **push notifications** for course updates  
