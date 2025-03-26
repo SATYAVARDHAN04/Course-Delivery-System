@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom"; // Added useLocation
 
 function Navbar() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation(); // Get current route
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -12,9 +13,12 @@ function Navbar() {
   };
 
   const handleProfileClick = () => {
-    console.log("Navigating to /profile"); // Debug log
-    setDropdownVisible(false); // Close dropdown after clicking
+    console.log("Navigating to /profile");
+    setDropdownVisible(false);
   };
+
+  // Check if the current path is /login or / (signup)
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/";
 
   return (
     <>
@@ -134,9 +138,12 @@ function Navbar() {
           </div>
 
           <ul className="nav-links">
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
+            {/* Conditionally render the Home link */}
+            {!isAuthPage && (
+              <li>
+                <Link to="/home">Home</Link>
+              </li>
+            )}
             <li>
               <Link to="/about-us">About</Link>
             </li>
