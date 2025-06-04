@@ -27,7 +27,7 @@ A web-based **Course Management System** designed for students and faculty to ac
    ```
 3. Start the development server:  
    ```sh
-   npm start
+   npm run dev
    ```
 4. Access the app in your browser at `http://localhost:3000`  
 
